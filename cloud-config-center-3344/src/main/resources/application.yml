@@ -1,10 +1,6 @@
 server:
   port: 3344
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/
 spring:
   application:
     name: cloud-config-center
@@ -16,5 +12,23 @@ spring:
           search-paths:
             #- springcloud-config
             - hello
-      label: main   #master
+          default-label: main   #master 注意：这个地方属性一定要是default-label，否则手动刷新不生效
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+#rabbitmq相关配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  #rabbitmq相关配置，暴露bus刷新配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "bus-refresh"
