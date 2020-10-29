@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 这边的@RefreshScope注解不能少，否则即使调用/refresh，配置也不会刷新
  */
-@RestController
+@RestController 
 @RefreshScope
 public class ConfigClientController {
     @Value("${config.info}")
